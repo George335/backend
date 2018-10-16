@@ -5,9 +5,12 @@
  */
 package com.jorge.desarrollador.impl;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.jorge.desarrollador.dao.UsuarioMapper;
 import com.jorge.desarrollador.domain.Users;
 import com.jorge.desarrollador.service.UsuarioService;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +34,7 @@ public class UsuarioImpl implements UsuarioService{
     }
         
     @Override
-    public void insertUsuario(Users usuario) throws Exception{
+    public void insertUsuario(Users usuario) throws JsonParseException, JsonMappingException, IOException{
 
         daoUsuario.insertUsuario(usuario);
 
