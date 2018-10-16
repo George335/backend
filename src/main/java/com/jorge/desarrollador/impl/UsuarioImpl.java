@@ -39,5 +39,19 @@ public class UsuarioImpl implements UsuarioService{
         daoUsuario.insertUsuario(usuario);
 
     }
+    
+    @Override
+    public void updateUsuario(Users usuario) throws JsonParseException, JsonMappingException, IOException{
+
+        daoUsuario.updateUsuario(usuario);
+
+    }
+    
+    @Override
+    public void deleteUsuario(Integer id) throws JsonParseException, JsonMappingException, IOException{
+
+        daoUsuario.deleteUsuario(id);
+
+    }
 
 }

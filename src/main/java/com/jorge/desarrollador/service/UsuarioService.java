@@ -21,4 +21,8 @@ public interface UsuarioService {
     
     public void insertUsuario(Users usuario) throws JsonParseException, JsonMappingException, IOException;
     
+    public void updateUsuario(Users usuario) throws JsonParseException, JsonMappingException, IOException;
+    
+    public void deleteUsuario(Integer id) throws JsonParseException, JsonMappingException, IOException;
+    
 }

@@ -22,4 +22,11 @@ public interface UsuarioMapper {
     
     @Insert("insert into users(name,salary) values(#{usuario.name},#{usuario.salary})")
     public void insertUsuario(@Param("usuario") Users usuario);
+    
+    @Update(" UPDATE users set name=#{usuario.name}, salary=#{usuario.salary} " +
+            "  where id = #{usuario.id}")
+    public boolean updateUsuario(@Param("usuario") Users usuario);
+    
+    @Delete(" delete from users where id=#{id}")
+    public void deleteUsuario(@Param("id") int id);
 }

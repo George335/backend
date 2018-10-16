@@ -94,10 +94,27 @@ public class UsuarioController {
             return new RestResponse(HttpStatus.NOT_ACCEPTABLE.value(),
                     "Los campos obligatorios no estan diligenciados");
         }
-        this.usuarioService.insertUsuario(user);
+        if (user.getId()== null) {
+            this.usuarioService.insertUsuario(user);
+        } else{
+            this.usuarioService.updateUsuario(user);
+        }
+        
 
         return new RestResponse(HttpStatus.OK.value(), "Operacion exitosa");
     }
+    
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+	public void deleteUser(@RequestBody String userJson) throws Exception {
+		this.mapper = new ObjectMapper();
+
+		Users user = this.mapper.readValue(userJson, Users.class);
+
+		if (user.getId() == null) {
+			throw new Exception("El id está nulo");
+		}
+		this.usuarioService.deleteUsuario(user.getId());
+	}
     
     private boolean validate(Users user) {
 		boolean isValid = true;
